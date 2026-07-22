@@ -1,0 +1,258 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════
+   ACCESSIBLE LIGHT DESIGN SYSTEM
+   High contrast, senior & visually accessible
+   ═══════════════════════════════════════════ */
+:root {
+  /* Primary Teal */
+  --teal-950: #041d1a;
+  --teal-900: #0a332f;
+  --teal-800: #0f4c47;
+  --teal-700: #15665f;
+  --teal-600: #1c8077;
+  --teal-500: #24998e;
+  --teal-400: #3db8ab;
+  --teal-200: #b2dfdb;
+  --teal-100: #e6f4f2;
+  --teal-50: #f0faf8;
+
+  /* Gold accents */
+  --gold-800: #785206;
+  --gold-700: #966708;
+  --gold-600: #b8860b;
+  --gold-500: #c99309;
+  --gold-400: #d4a017;
+  --gold-100: #fef8e7;
+  --gold-50: #fffdf5;
+
+  /* High contrast neutrals */
+  --slate-950: #070a10;
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50: #f8fafc;
+  --white: #ffffff;
+
+  /* Semantic Light Mode Tokens */
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --glass-bg: rgba(255, 255, 255, 0.94);
+  --glass-border: rgba(15, 76, 71, 0.15);
+
+  /* Radii */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.75rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 10px 30px rgba(15, 23, 42, 0.1);
+  --shadow-glow: 0 10px 30px rgba(15, 76, 71, 0.12);
+
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-normal: 300ms;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+}
+
+/* ═══════════════════════════════════════════
+   BASE RESET & ACCESSIBLE TYPOGRAPHY
+   ═══════════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
+  line-height: 1.65;
+  margin: 0;
+  overflow-x: hidden;
+  font-size: 1.0625rem; /* Larger base font for readability */
+}
+
+/* ═══════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--slate-100);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--teal-700);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--teal-900);
+}
+
+/* ═══════════════════════════════════════════
+   UTILITY CLASSES & CARDS
+   ═══════════════════════════════════════════ */
+
+/* Glass header / panel */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* High contrast clinical card */
+.glass-card {
+  background: var(--card-bg);
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  transition: transform var(--duration-normal) var(--ease-smooth),
+    box-shadow var(--duration-normal) var(--ease-smooth),
+    border-color var(--duration-normal) var(--ease-smooth);
+}
+
+.glass-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(15, 76, 71, 0.12);
+  border-color: var(--teal-600);
+}
+
+/* Gold accent line */
+.gold-line {
+  width: 64px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold-600), var(--gold-500));
+  border-radius: var(--radius-full);
+}
+
+/* Section spacing */
+.section {
+  padding: 6rem 1.5rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 8rem 2rem;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* High contrast gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--teal-800) 0%, var(--gold-700) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Primary Button - Deep Teal high contrast */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9375rem 2.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--white) !important;
+  background: linear-gradient(135deg, var(--teal-800), var(--teal-900));
+  border: 1px solid var(--teal-950);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-smooth);
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(15, 76, 71, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15, 76, 71, 0.35);
+  background: linear-gradient(135deg, var(--teal-700), var(--teal-800));
+}
+
+/* Secondary Button - High contrast outline */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9375rem 2.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--teal-900) !important;
+  background: #ffffff;
+  border: 2px solid var(--teal-800);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-smooth);
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+.btn-secondary:hover {
+  background: var(--teal-50);
+  border-color: var(--teal-900);
+  transform: translateY(-2px);
+}
+
+/* Background patterns */
+.bg-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(15, 76, 71, 0.06) 1px,
+    transparent 0
+  );
+  background-size: 32px 32px;
+}
+
+.bg-radial {
+  background: radial-gradient(
+    ellipse 80% 50% at 50% -20%,
+    rgba(15, 76, 71, 0.08),
+    transparent
+  );
+}
+
+/* Simple subtle animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
