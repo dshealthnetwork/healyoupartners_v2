@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HealYou Partners — Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal-950:#131c17;--teal-900:#1d2b23;--teal-800:#263a30;--teal-700:#34503f;--teal-600:#44654f;--teal-200:#c4d3c6;--teal-100:#e2e9e1;
+  --gold-700:#7c4e1e;--gold-600:#9c6427;--gold-400:#bd8548;
+  --slate-950:#0e130f;--slate-900:#1a2119;--slate-700:#43514a;--slate-600:#5c6a62;--slate-500:#798379;--slate-300:#c2c9bf;--slate-200:#dfe3d9;--slate-50:#f8f8f4;
+  --paper:#faf9f5;--paper-dim:#f3f1ea;
+  --radius-md:.5rem;--radius-lg:.75rem;
+  --shadow-md:0 6px 20px rgba(26,33,25,.08);--shadow-lg:0 16px 40px rgba(26,33,25,.1);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--slate-950);font-family:'Inter',sans-serif;font-size:17px;line-height:1.65}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-.01em;margin:0}
+.mono{font-family:'IBM Plex Mono',monospace}
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:'IBM Plex Mono',monospace;font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-700)}
+.eyebrow::before{content:"";width:5px;height:5px;background:var(--gold-600);border-radius:50%}
+.btn-primary{display:inline-flex;align-items:center;padding:.875rem 1.875rem;font-weight:600;font-size:.9375rem;color:#fff;background:var(--slate-900);border-radius:var(--radius-md);text-decoration:none}
+.btn-secondary{display:inline-flex;align-items:center;padding:.875rem 1.875rem;font-weight:600;font-size:.9375rem;color:var(--slate-900);background:transparent;border:1.5px solid var(--slate-300);border-radius:var(--radius-md);text-decoration:none}
+.stitch{width:104px;height:15px;background-repeat:no-repeat;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='104' height='15' viewBox='0 0 104 15'%3E%3Cline x1='0' y1='7.5' x2='104' y2='7.5' stroke='%239c6427' stroke-width='1.25'/%3E%3Cline x1='8' y1='1' x2='8' y2='14' stroke='%239c6427' stroke-width='1.5'/%3E%3Cline x1='26' y1='1' x2='26' y2='14' stroke='%239c6427' stroke-width='1.5'/%3E%3Cline x1='44' y1='1' x2='44' y2='14' stroke='%239c6427' stroke-width='1.5'/%3E%3Cline x1='62' y1='1' x2='62' y2='14' stroke='%239c6427' stroke-width='1.5'/%3E%3Cline x1='80' y1='1' x2='80' y2='14' stroke='%239c6427' stroke-width='1.5'/%3E%3Cline x1='98' y1='1' x2='98' y2='14' stroke='%239c6427' stroke-width='1.5'/%3E%3C/svg%3E")}
+.photo-placeholder{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--slate-200);box-shadow:var(--shadow-md);background:
+  linear-gradient(135deg, var(--teal-800), var(--teal-600));
+}
+.photo-placeholder::after{content:attr(data-label);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:1rem}
+header{position:sticky;top:0;background:rgba(250,249,245,.95);border-bottom:1px solid rgba(26,33,25,.08);backdrop-filter:blur(10px);z-index:10}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:76px}
+.wordmark{font-family:'Fraunces',serif;font-style:italic;font-size:1.375rem;color:var(--slate-950);text-decoration:none}
+nav a{margin-left:2rem;font-weight:600;font-size:.9375rem;color:var(--slate-700);text-decoration:none}
+section{padding:5.5rem 0}
+.hero{padding-top:4.5rem;background:var(--paper-dim);border-bottom:1px solid var(--slate-200)}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
+.hero-img{aspect-ratio:5/4}
+.hero-tag{position:absolute;left:-1rem;bottom:-1.25rem;background:#fff;border:1px solid var(--slate-200);border-radius:var(--radius-md);padding:.875rem 1.25rem;box-shadow:var(--shadow-lg)}
+.stats{background:#fff;border-bottom:1px solid var(--slate-200);padding:3rem 0}
+.stats-row{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem 1rem;text-align:center}
+.stat-val{font-family:'IBM Plex Mono',monospace;font-size:2rem;font-weight:500}
+.stat-lbl{font-size:.8125rem;color:var(--slate-600);margin-top:.375rem}
+.services{background:var(--paper-dim)}
+.svc-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;margin-top:2rem}
+.svc-card{background:#fff;border:1px solid var(--slate-200);border-radius:var(--radius-lg);padding:2rem}
+.svc-icon{width:46px;height:46px;display:flex;align-items:center;justify-content:center;border:1px solid var(--teal-200);border-radius:var(--radius-md);color:var(--teal-700);margin-bottom:1.375rem}
+.process-row{padding:1.75rem 0;border-top:1px solid var(--slate-200);display:grid;grid-template-columns:3.5rem 1fr;gap:1.25rem}
+.process-row:last-child{border-bottom:1px solid var(--slate-200)}
+.step-n{font-family:'IBM Plex Mono',monospace;color:var(--gold-600)}
+.about{background:var(--paper-dim)}
+.about-grid{display:grid;grid-template-columns:1fr;gap:3.5rem;align-items:center}
+.about-img{aspect-ratio:4/3}
+.cta{background:var(--teal-900);padding:5.5rem 0;text-align:center}
+footer{background:var(--teal-950);color:var(--teal-100);padding:4.5rem 0 2.5rem}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:2.75rem}
+@media(min-width:900px){
+  .hero-grid{grid-template-columns:1fr .9fr;gap:4rem}
+  .about-grid{grid-template-columns:1fr 1fr}
+}
+@media(min-width:768px){
+  .stats-row{grid-template-columns:repeat(4,1fr)}
+  .stat-cell{border-left:1px solid var(--slate-200)}
+  .stat-cell:first-child{border-left:none}
+  .svc-grid{grid-template-columns:repeat(4,1fr)}
+  .footer-grid{grid-template-columns:2fr 1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container hdr-inner">
+    <a href="#" class="wordmark">HealYou Partners</a>
+    <nav>
+      <a href="#">Home</a><a href="#">Services</a><a href="#">About</a><a href="#">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Wound Care &amp; Pain Management</span>
+      <h1 style="font-size:clamp(2.25rem,4.6vw,3.5rem);line-height:1.12;margin-top:1.125rem;margin-bottom:1.25rem;">
+        Wounds that get <em style="font-style:italic;color:var(--gold-700)">followed</em>, not just treated.
+      </h1>
+      <p style="font-size:1.125rem;color:var(--slate-700);max-width:520px;margin-bottom:2rem;">
+        HealYou Partners treats chronic wounds and persistent pain with a plan you can see — what's changing, what's next, and why.
+      </p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.25rem;">
+        <a href="#" class="btn-primary">Schedule a Consultation</a>
+        <a href="#" class="btn-secondary">Our Services</a>
+      </div>
+      <div class="stitch"></div>
+    </div>
+    <div style="position:relative;">
+      <div class="photo-placeholder hero-img" data-label="Clinic photography&#10;(hero-bg.png)"></div>
+      <div class="hero-tag">
+        <div class="mono" style="font-size:.6875rem;letter-spacing:.1em;color:var(--slate-500);text-transform:uppercase;">Avg. closure rate</div>
+        <div style="font-family:'Fraunces',serif;font-size:1.75rem;color:var(--teal-800);">92%<span style="font-size:.9375rem;color:var(--slate-500);"> / 12 wks</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container stats-row">
+    <div class="stat-cell"><div class="stat-val">15,000+</div><div class="stat-lbl">Patients treated</div></div>
+    <div class="stat-cell"><div class="stat-val">98%</div><div class="stat-lbl">Treatment satisfaction</div></div>
+    <div class="stat-cell"><div class="stat-val">25 yrs</div><div class="stat-lbl">Combined experience</div></div>
+    <div class="stat-cell"><div class="stat-val">40+</div><div class="stat-lbl">Specialists on staff</div></div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="container">
+    <div style="max-width:560px;margin-bottom:1rem;">
+      <span class="eyebrow">What We Treat</span>
+      <h2 style="font-size:clamp(1.875rem,3.2vw,2.5rem);margin-top:.625rem;margin-bottom:1rem;">Four disciplines, one chart.</h2>
+      <p style="font-size:1.0625rem;color:var(--slate-700);margin:0;">Wounds rarely have a single cause. Our team treats the tissue, the pain, and the circulation behind it together.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9.5" width="17" height="5" rx="2.5" transform="rotate(-25 12 12)"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg></div>
+        <h3 style="font-size:1.1875rem;margin-bottom:.625rem;">Advanced Wound Care</h3>
+        <p style="font-size:.9375rem;color:var(--slate-700);margin:0;">Diabetic ulcers, pressure injuries, and post-surgical wounds treated with debridement, advanced dressings, and progress measured at every visit.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12h4l2-6 3 12 2-9 1.5 3h6.5"/></svg></div>
+        <h3 style="font-size:1.1875rem;margin-bottom:.625rem;">Pain Management</h3>
+        <p style="font-size:.9375rem;color:var(--slate-700);margin:0;">Plans for chronic and acute pain that combine interventional procedures, physical therapy, and medication management under one roof.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="9" cy="10" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="9" r=".9" fill="currentColor" stroke="none"/><circle cx="13" cy="14.5" r="1.3" fill="currentColor" stroke="none"/></svg></div>
+        <h3 style="font-size:1.1875rem;margin-bottom:.625rem;">Regenerative Therapy</h3>
+        <p style="font-size:.9375rem;color:var(--slate-700);margin:0;">Biologics, growth-factor therapy, and tissue grafts, used selectively when a wound has stalled and needs a different kind of help.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4c0 5 5 5 5 10s-2 4-2 6"/><path d="M20 4c0 5-5 5-5 10s2 4 2 6"/><path d="M9 12h6"/></svg></div>
+        <h3 style="font-size:1.1875rem;margin-bottom:.625rem;">Vascular Assessment</h3>
+        <p style="font-size:.9375rem;color:var(--slate-700);margin:0;">Doppler studies and vascular workups to find the circulation problems that are quietly keeping a wound from closing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff;">
+  <div class="container">
+    <div style="max-width:560px;margin-bottom:1rem;">
+      <span class="eyebrow">How It Works</span>
+      <h2 style="font-size:clamp(1.875rem,3.2vw,2.5rem);margin-top:.625rem;margin-bottom:1rem;">Every visit against the last one.</h2>
+    </div>
+    <div class="process-row"><span class="step-n">01</span><div><h3 style="font-size:1.25rem;margin-bottom:.5rem;">Assess</h3><p style="color:var(--slate-700);margin:0;max-width:620px;">A full workup — wound measurements, vascular studies, pain history — before we propose anything.</p></div></div>
+    <div class="process-row"><span class="step-n">02</span><div><h3 style="font-size:1.25rem;margin-bottom:.5rem;">Treat</h3><p style="color:var(--slate-700);margin:0;max-width:620px;">A plan built around the wound and your life, not a standard protocol. Adjusted as it responds.</p></div></div>
+    <div class="process-row"><span class="step-n">03</span><div><h3 style="font-size:1.25rem;margin-bottom:.5rem;">Track</h3><p style="color:var(--slate-700);margin:0;max-width:620px;">Every visit measured against the last one, so you can see the wound closing rather than just hope it is.</p></div></div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="container about-grid">
+    <div class="photo-placeholder about-img" data-label="Clinician + patient&#10;(about-care.png)"></div>
+    <div>
+      <span class="eyebrow">Our Approach</span>
+      <h2 style="font-size:clamp(1.875rem,3.2vw,2.5rem);margin-top:.625rem;margin-bottom:1.25rem;">Judged by outcomes, not appointments.</h2>
+      <p style="font-size:1.0625rem;color:var(--slate-700);line-height:1.8;margin-bottom:1.75rem;">Too many wound and pain patients cycle through visits without a clear sense of progress. Every plan here starts with a baseline — wound size, pain scores, mobility — and is measured against it, visit over visit.</p>
+      <a href="#" class="btn-primary">Meet the Team</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="stitch" style="margin:0 auto 1.75rem;"></div>
+    <h2 style="font-size:clamp(1.875rem,3.4vw,2.75rem);color:#fff;margin-bottom:1rem;max-width:640px;margin-left:auto;margin-right:auto;">Start with an assessment, not a sales pitch.</h2>
+    <p style="color:var(--teal-200);max-width:520px;margin:0 auto 2.25rem;">Bring your history and your prior treatments. We'll tell you plainly what we see and what we'd do.</p>
+    <div style="display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;">
+      <a href="#" style="padding:.875rem 1.875rem;font-weight:600;font-size:.9375rem;background:#fff;color:var(--teal-900);border-radius:var(--radius-md);text-decoration:none;">Schedule Consultation</a>
+      <a href="#" style="padding:.875rem 1.875rem;font-weight:600;font-size:.9375rem;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:var(--radius-md);text-decoration:none;">Call (555) 000-0000</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="wordmark" style="color:#fff;margin-bottom:1rem;display:block;">HealYou Partners</div>
+      <p style="color:var(--teal-200);max-width:340px;">Wound care and pain management, tracked closely and explained plainly — from first visit to closed wound.</p>
+    </div>
+    <div>
+      <div class="mono" style="font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-400);margin-bottom:1.125rem;">Site</div>
+      <div style="display:flex;flex-direction:column;gap:.75rem;color:var(--teal-100);">Services<br>About<br>Contact</div>
+    </div>
+    <div>
+      <div class="mono" style="font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-400);margin-bottom:1.125rem;">Contact</div>
+      <div style="display:flex;flex-direction:column;gap:.625rem;color:var(--teal-100);">info@healyoupartners.com<br>(555) 000-0000<br>123 Medical Center Dr, Suite 100</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

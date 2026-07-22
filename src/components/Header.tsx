@@ -32,12 +32,14 @@ export default function Header() {
         zIndex: 100,
         transition: "all 0.3s cubic-bezier(0.22,1,0.36,1)",
         background: scrolled
-          ? "rgba(255, 255, 255, 0.96)"
-          : "rgba(255, 255, 255, 0.88)",
-        backdropFilter: "blur(16px) saturate(1.5)",
-        WebkitBackdropFilter: "blur(16px) saturate(1.5)",
-        borderBottom: "1px solid rgba(203, 213, 225, 0.6)",
-        boxShadow: scrolled ? "0 4px 20px rgba(15, 23, 42, 0.06)" : "none",
+          ? "rgba(250, 249, 245, 0.97)"
+          : "rgba(250, 249, 245, 0.9)",
+        backdropFilter: "blur(14px) saturate(1.1)",
+        WebkitBackdropFilter: "blur(14px) saturate(1.1)",
+        borderBottom: scrolled
+          ? "1px solid rgba(26, 33, 25, 0.12)"
+          : "1px solid rgba(26, 33, 25, 0.06)",
+        boxShadow: scrolled ? "0 4px 20px rgba(26, 33, 25, 0.06)" : "none",
       }}
     >
       <div
@@ -48,7 +50,7 @@ export default function Header() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          height: scrolled ? 76 : 96,
+          height: scrolled ? 74 : 92,
           transition: "height 0.3s cubic-bezier(0.22,1,0.36,1)",
         }}
       >
@@ -60,10 +62,10 @@ export default function Header() {
             width={260}
             height={80}
             style={{
-              height: scrolled ? "54px" : "70px",
+              height: scrolled ? "52px" : "66px",
               width: "auto",
               objectFit: "contain",
-              borderRadius: "6px",
+              borderRadius: "4px",
               transition: "height 0.3s cubic-bezier(0.22,1,0.36,1)",
             }}
             priority
@@ -84,18 +86,18 @@ export default function Header() {
               key={link.href}
               href={link.href}
               style={{
-                fontSize: "1rem",
+                fontSize: "0.9375rem",
                 fontWeight: 600,
-                color: "var(--slate-800)",
+                color: "var(--slate-700)",
                 textDecoration: "none",
                 letterSpacing: "0.01em",
                 transition: "color 0.2s ease",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "var(--teal-800)")
+                (e.currentTarget.style.color = "var(--slate-950)")
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.color = "var(--slate-800)")
+                (e.currentTarget.style.color = "var(--slate-700)")
               }
             >
               {link.label}
@@ -104,7 +106,7 @@ export default function Header() {
           <Link
             href="/contact"
             className="btn-primary"
-            style={{ padding: "0.625rem 1.5rem", fontSize: "0.9375rem" }}
+            style={{ padding: "0.625rem 1.5rem", fontSize: "0.875rem" }}
           >
             Book Consultation
           </Link>
@@ -126,20 +128,18 @@ export default function Header() {
           <div
             style={{
               width: 26,
-              height: 3,
-              background: "var(--slate-800)",
-              borderRadius: 2,
+              height: 2,
+              background: "var(--slate-900)",
               transition: "all 0.3s ease",
-              transform: mobileOpen ? "rotate(45deg) translateY(9px)" : "none",
+              transform: mobileOpen ? "rotate(45deg) translateY(8px)" : "none",
             }}
           />
           <div
             style={{
               width: 26,
-              height: 3,
-              background: "var(--slate-800)",
-              borderRadius: 2,
-              marginTop: 6,
+              height: 2,
+              background: "var(--slate-900)",
+              marginTop: 7,
               transition: "all 0.3s ease",
               opacity: mobileOpen ? 0 : 1,
             }}
@@ -147,10 +147,9 @@ export default function Header() {
           <div
             style={{
               width: 26,
-              height: 3,
-              background: "var(--slate-800)",
-              borderRadius: 2,
-              marginTop: 6,
+              height: 2,
+              background: "var(--slate-900)",
+              marginTop: 7,
               transition: "all 0.3s ease",
               transform: mobileOpen ? "rotate(-45deg) translateY(-9px)" : "none",
             }}
@@ -172,10 +171,10 @@ export default function Header() {
               top: "100%",
               left: 0,
               right: 0,
-              background: "#ffffff",
-              borderBottom: "2px solid var(--teal-800)",
+              background: "var(--paper, #faf9f5)",
+              borderBottom: "2px solid var(--slate-900)",
               padding: "1.5rem",
-              boxShadow: "0 10px 30px rgba(15, 23, 42, 0.12)",
+              boxShadow: "0 10px 30px rgba(26, 33, 25, 0.12)",
               display: "flex",
               flexDirection: "column",
               gap: "1.25rem",
@@ -187,7 +186,7 @@ export default function Header() {
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 style={{
-                  fontSize: "1.125rem",
+                  fontSize: "1.0625rem",
                   fontWeight: 600,
                   color: "var(--slate-900)",
                   textDecoration: "none",
@@ -204,6 +203,7 @@ export default function Header() {
               onClick={() => setMobileOpen(false)}
               style={{
                 textAlign: "center",
+                justifyContent: "center",
                 marginTop: "0.5rem",
               }}
             >

@@ -5,253 +5,266 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 
+/* ── Minimal line icons, drawn for this practice rather than pulled
+      from an emoji set. Single stroke, currentColor, no fills. ── */
+
+function BandageIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3.5" y="9.5" width="17" height="5" rx="2.5" transform="rotate(-25 12 12)" />
+      <path d="M9.2 9.2c.8.8.8 2 0 2.8m3.6-6.4c.8.8.8 2 0 2.8m3.6 6.4c-.8-.8-.8-2 0-2.8" strokeWidth="1.1" />
+      <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function PulseIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M2.5 12h4l2-6 3 12 2-9 1.5 3h6.5" />
+    </svg>
+  );
+}
+
+function CellIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="8.5" />
+      <circle cx="9" cy="10" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="14.5" cy="9" r="0.9" fill="currentColor" stroke="none" />
+      <circle cx="13" cy="14.5" r="1.3" fill="currentColor" stroke="none" />
+      <circle cx="8.5" cy="15" r="0.7" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function VesselIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4c0 5 5 5 5 10s-2 4-2 6" />
+      <path d="M20 4c0 5-5 5-5 10s2 4 2 6" />
+      <path d="M9 12h6" />
+    </svg>
+  );
+}
+
 const services = [
   {
-    icon: "🩹",
+    Icon: BandageIcon,
     title: "Advanced Wound Care",
     description:
-      "Evidence-based wound management using state-of-the-art techniques for optimal healing.",
+      "Diabetic ulcers, pressure injuries, and post-surgical wounds treated with debridement, advanced dressings, and progress measured at every visit.",
   },
   {
-    icon: "💊",
+    Icon: PulseIcon,
     title: "Pain Management",
     description:
-      "Comprehensive, multidisciplinary approaches to chronic and acute pain relief.",
+      "Plans for chronic and acute pain that combine interventional procedures, physical therapy, and medication management under one roof.",
   },
   {
-    icon: "🔬",
+    Icon: CellIcon,
     title: "Regenerative Therapy",
     description:
-      "Innovative biologics and regenerative treatments to accelerate tissue repair.",
+      "Biologics, growth-factor therapy, and tissue grafts, used selectively when a wound has stalled and needs a different kind of help.",
   },
   {
-    icon: "🫀",
+    Icon: VesselIcon,
     title: "Vascular Assessment",
     description:
-      "Advanced diagnostic evaluations to identify and address underlying vascular conditions.",
+      "Doppler studies and vascular workups to find the circulation problems that are quietly keeping a wound from closing.",
   },
 ];
 
 const stats = [
-  { value: "15K+", label: "Patients Treated" },
-  { value: "98%", label: "Satisfaction Rate" },
-  { value: "25+", label: "Years Experience" },
-  { value: "40+", label: "Specialists" },
+  { value: "15,000+", label: "Patients treated" },
+  { value: "98%", label: "Treatment satisfaction" },
+  { value: "25 yrs", label: "Combined experience" },
+  { value: "40+", label: "Specialists on staff" },
+];
+
+const process = [
+  {
+    n: "01",
+    title: "Assess",
+    description:
+      "A full workup — wound measurements, vascular studies, pain history — before we propose anything.",
+  },
+  {
+    n: "02",
+    title: "Treat",
+    description:
+      "A plan built around the wound and your life, not a standard protocol. Adjusted as it responds.",
+  },
+  {
+    n: "03",
+    title: "Track",
+    description:
+      "Every visit measured against the last one, so you can see the wound closing rather than just hope it is.",
+  },
 ];
 
 export default function HomePage() {
   return (
     <>
       {/* ═════════════════════════════════════
-          HERO SECTION (Visible Hero BG + High-Contrast Content)
+          HERO — asymmetric, editorial
           ═════════════════════════════════════ */}
       <section
         style={{
           position: "relative",
-          minHeight: "92vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          overflow: "hidden",
-          paddingTop: "7rem",
-          paddingBottom: "4rem",
+          paddingTop: "8.5rem",
+          paddingBottom: "4.5rem",
+          background: "var(--paper-dim, var(--slate-50))",
+          borderBottom: "1px solid var(--slate-200)",
         }}
       >
-        {/* Background image */}
         <div
+          className="container hero-grid"
           style={{
-            position: "absolute",
-            inset: 0,
-            zIndex: 0,
-          }}
-        >
-          <Image
-            src="/hero-bg.png"
-            alt="Modern luxury hospital interior"
-            fill
-            style={{ objectFit: "cover", objectPosition: "center" }}
-            priority
-          />
-          {/* Subtle light overlay to reveal full hero background */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(240,247,246,0.45) 60%, rgba(248,250,252,0.95) 100%)",
-            }}
-          />
-        </div>
-
-        {/* Decorative soft teal glow */}
-        <div
-          style={{
-            position: "absolute",
-            top: "20%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "700px",
-            height: "500px",
-            background:
-              "radial-gradient(ellipse, rgba(36,153,142,0.15) 0%, transparent 70%)",
-            pointerEvents: "none",
-            zIndex: 1,
-          }}
-        />
-
-        {/* Content Box with Frosted Glass for Maximum Contrast & Full BG Visibility */}
-        <div
-          style={{
-            position: "relative",
-            zIndex: 2,
-            textAlign: "center",
-            maxWidth: 900,
-            width: "100%",
-            margin: "0 1.5rem",
-            padding: "clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem)",
-            background: "rgba(255, 255, 255, 0.88)",
-            backdropFilter: "blur(16px) saturate(1.4)",
-            WebkitBackdropFilter: "blur(16px) saturate(1.4)",
-            borderRadius: "var(--radius-2xl)",
-            border: "2px solid rgba(255, 255, 255, 0.95)",
-            boxShadow: "0 20px 50px rgba(15, 23, 42, 0.12)",
+            padding: "0 1.5rem",
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "3rem",
+            alignItems: "center",
           }}
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span
+            <span className="eyebrow">Wound Care &amp; Pain Management</span>
+
+            <h1
               style={{
-                display: "inline-block",
-                fontSize: "0.8125rem",
-                fontWeight: 700,
-                color: "var(--teal-900)",
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
+                fontSize: "clamp(2.25rem, 4.6vw, 3.5rem)",
+                lineHeight: 1.12,
+                color: "var(--slate-950)",
+                marginTop: "1.125rem",
                 marginBottom: "1.25rem",
-                padding: "0.5rem 1.25rem",
-                border: "1.5px solid var(--teal-700)",
-                borderRadius: "var(--radius-full)",
-                background: "#ffffff",
-                boxShadow: "0 2px 8px rgba(15, 23, 42, 0.05)",
               }}
             >
-              Excellence in Medical Care
-            </span>
+              Wounds that get <span className="gradient-text">followed</span>,
+              not just treated.
+            </h1>
+
+            <p
+              style={{
+                fontSize: "1.125rem",
+                color: "var(--slate-700)",
+                maxWidth: 520,
+                marginBottom: "2rem",
+                lineHeight: 1.7,
+              }}
+            >
+              HealYou Partners treats chronic wounds and persistent pain with
+              a plan you can see — what&rsquo;s changing, what&rsquo;s next,
+              and why.
+            </p>
+
+            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2.25rem" }}>
+              <Link href="/contact" className="btn-primary">
+                Schedule a Consultation
+              </Link>
+              <Link href="/services" className="btn-secondary">
+                Our Services
+              </Link>
+            </div>
+
+            <div className="gold-line" />
           </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.15,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            style={{
-              fontSize: "clamp(2.25rem, 5vw, 4rem)",
-              fontWeight: 800,
-              lineHeight: 1.15,
-              color: "var(--slate-900)",
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Advanced Wound Care &{" "}
-            <span className="gradient-text">Comprehensive Pain Management</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.7,
-              delay: 0.3,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            style={{
-              fontSize: "clamp(1.0625rem, 1.8vw, 1.25rem)",
-              color: "var(--slate-800)",
-              fontWeight: 500,
-              maxWidth: 680,
-              margin: "0 auto 2.25rem",
-              lineHeight: 1.7,
-            }}
-          >
-            Delivering evidence-based treatment with compassion, innovation, and
-            personalized care — because every patient deserves healing.
-          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.7,
-              delay: 0.45,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            style={{
-              display: "flex",
-              gap: "1.25rem",
-              justifyContent: "center",
-              flexWrap: "wrap",
-            }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            style={{ position: "relative" }}
           >
-            <Link href="/contact" className="btn-primary">
-              Schedule a Consultation
-            </Link>
-            <Link href="/services" className="btn-secondary">
-              Explore Services
-            </Link>
+            <div
+              style={{
+                position: "relative",
+                borderRadius: "var(--radius-lg)",
+                overflow: "hidden",
+                aspectRatio: "5/4",
+                border: "1px solid var(--slate-200)",
+                boxShadow: "var(--shadow-md)",
+              }}
+            >
+              <Image
+                src="/hero-bg.png"
+                alt="HealYou Partners clinical care"
+                fill
+                style={{ objectFit: "cover" }}
+                priority
+              />
+            </div>
+
+            {/* Clinical annotation tag — the "chart" motif, not a glass overlay */}
+            <div
+              style={{
+                position: "absolute",
+                left: "-1rem",
+                bottom: "-1.25rem",
+                background: "#ffffff",
+                border: "1px solid var(--slate-200)",
+                borderRadius: "var(--radius-md)",
+                padding: "0.875rem 1.25rem",
+                boxShadow: "var(--shadow-lg)",
+              }}
+              className="hero-tag"
+            >
+              <div className="mono" style={{ fontSize: "0.6875rem", letterSpacing: "0.1em", color: "var(--slate-500)", textTransform: "uppercase" }}>
+                Avg. closure rate
+              </div>
+              <div style={{ fontFamily: "var(--font-fraunces)", fontSize: "1.75rem", color: "var(--teal-800)", lineHeight: 1.2 }}>
+                92%<span style={{ fontSize: "0.9375rem", color: "var(--slate-500)" }}> / 12 wks</span>
+              </div>
+            </div>
           </motion.div>
         </div>
+
+        <style jsx>{`
+          @media (min-width: 900px) {
+            .hero-grid {
+              grid-template-columns: 1fr 0.9fr !important;
+              gap: 4rem !important;
+            }
+          }
+          @media (max-width: 480px) {
+            .hero-tag {
+              left: 0 !important;
+            }
+          }
+        `}</style>
       </section>
 
       {/* ═════════════════════════════════════
-          STATS BAR
+          STAT RAIL — hairline dividers, mono figures
           ═════════════════════════════════════ */}
-      <section
-        style={{
-          background: "#ffffff",
-          borderTop: "2px solid var(--slate-200)",
-          borderBottom: "2px solid var(--slate-200)",
-          boxShadow: "0 4px 12px rgba(15, 23, 42, 0.03)",
-        }}
-      >
+      <section style={{ background: "#ffffff", borderBottom: "1px solid var(--slate-200)" }}>
         <div
-          className="container"
+          className="container stats-row"
           style={{
             padding: "3rem 1.5rem",
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
-            gap: "2rem",
+            gap: "2rem 1rem",
           }}
         >
           {stats.map((stat, i) => (
-            <AnimateOnScroll key={stat.label} delay={i * 0.1}>
-              <div style={{ textAlign: "center" }}>
-                <div
-                  style={{
-                    fontSize: "clamp(2rem, 3.5vw, 3rem)",
-                    fontWeight: 800,
-                    color: "var(--teal-900)",
-                    lineHeight: 1.1,
-                  }}
-                >
+            <AnimateOnScroll key={stat.label} delay={i * 0.06}>
+              <div
+                style={{
+                  textAlign: "center",
+                  padding: "0 1rem",
+                  borderLeft: i % 2 === 1 ? "1px solid var(--slate-200)" : "none",
+                }}
+                className="stat-cell"
+              >
+                <div className="mono" style={{ fontSize: "clamp(1.5rem, 2.6vw, 2.125rem)", color: "var(--slate-950)", fontWeight: 500 }}>
                   {stat.value}
                 </div>
-                <div
-                  style={{
-                    fontSize: "0.875rem",
-                    fontWeight: 700,
-                    color: "var(--slate-700)",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    marginTop: "0.375rem",
-                  }}
-                >
+                <div style={{ fontSize: "0.8125rem", color: "var(--slate-600)", marginTop: "0.375rem" }}>
                   {stat.label}
                 </div>
               </div>
@@ -260,45 +273,41 @@ export default function HomePage() {
         </div>
         <style jsx>{`
           @media (min-width: 768px) {
-            div {
+            .stats-row {
               grid-template-columns: repeat(4, 1fr) !important;
+            }
+            .stat-cell {
+              border-left: 1px solid var(--slate-200) !important;
+            }
+            .stat-cell:first-child {
+              border-left: none !important;
             }
           }
         `}</style>
       </section>
 
       {/* ═════════════════════════════════════
-          SERVICES PREVIEW
+          SERVICES
           ═════════════════════════════════════ */}
-      <section className="section bg-grid">
-        <div className="bg-radial" style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
-        <div className="container" style={{ position: "relative" }}>
+      <section className="section" style={{ background: "var(--paper-dim, var(--slate-50))" }}>
+        <div className="container">
           <AnimateOnScroll>
-            <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-              <span
-                style={{
-                  fontSize: "0.8125rem",
-                  fontWeight: 700,
-                  color: "var(--gold-800)",
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                }}
-              >
-                What We Offer
-              </span>
+            <div style={{ maxWidth: 560, marginBottom: "3.5rem" }}>
+              <span className="eyebrow">What We Treat</span>
               <h2
                 style={{
-                  fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
-                  fontWeight: 800,
-                  color: "var(--slate-900)",
-                  marginTop: "0.5rem",
+                  fontSize: "clamp(1.875rem, 3.2vw, 2.5rem)",
+                  color: "var(--slate-950)",
+                  marginTop: "0.625rem",
                   marginBottom: "1rem",
-                  letterSpacing: "-0.01em",
                 }}
               >
-                Our Core Services
+                Four disciplines, one chart.
               </h2>
-              <div className="gold-line" style={{ margin: "0 auto" }} />
+              <p style={{ fontSize: "1.0625rem", color: "var(--slate-700)", lineHeight: 1.7, margin: 0 }}>
+                Wounds rarely have a single cause. Our team treats the tissue,
+                the pain, and the circulation behind it together.
+              </p>
             </div>
           </AnimateOnScroll>
 
@@ -306,40 +315,38 @@ export default function HomePage() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(1, 1fr)",
-              gap: "1.75rem",
+              gap: "1.25rem",
             }}
             className="services-grid"
           >
             {services.map((service, i) => (
-              <AnimateOnScroll key={service.title} delay={i * 0.1}>
+              <AnimateOnScroll key={service.title} delay={i * 0.08}>
                 <div
                   className="glass-card"
                   style={{
-                    padding: "2.25rem",
+                    padding: "2rem",
                     height: "100%",
                   }}
                 >
                   <div
                     style={{
-                      fontSize: "2.25rem",
-                      marginBottom: "1.25rem",
-                      width: 60,
-                      height: 60,
+                      width: 46,
+                      height: 46,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       borderRadius: "var(--radius-md)",
-                      background: "var(--teal-100)",
                       border: "1px solid var(--teal-200)",
+                      color: "var(--teal-700)",
+                      marginBottom: "1.375rem",
                     }}
                   >
-                    {service.icon}
+                    <service.Icon />
                   </div>
                   <h3
                     style={{
-                      fontSize: "1.25rem",
-                      fontWeight: 700,
-                      color: "var(--slate-900)",
+                      fontSize: "1.1875rem",
+                      color: "var(--slate-950)",
                       marginBottom: "0.625rem",
                     }}
                   >
@@ -347,7 +354,7 @@ export default function HomePage() {
                   </h3>
                   <p
                     style={{
-                      fontSize: "1rem",
+                      fontSize: "0.9375rem",
                       color: "var(--slate-700)",
                       lineHeight: 1.7,
                       margin: 0,
@@ -360,13 +367,8 @@ export default function HomePage() {
             ))}
           </div>
 
-          <AnimateOnScroll delay={0.4}>
-            <div
-              style={{
-                textAlign: "center",
-                marginTop: "3.5rem",
-              }}
-            >
+          <AnimateOnScroll delay={0.3}>
+            <div style={{ marginTop: "3rem" }}>
               <Link href="/services" className="btn-secondary">
                 View All Services →
               </Link>
@@ -388,11 +390,65 @@ export default function HomePage() {
       </section>
 
       {/* ═════════════════════════════════════
+          PROCESS — a real sequence, so numbering earns its place
+          ═════════════════════════════════════ */}
+      <section className="section" style={{ background: "#ffffff" }}>
+        <div className="container">
+          <AnimateOnScroll>
+            <div style={{ maxWidth: 560, marginBottom: "3.5rem" }}>
+              <span className="eyebrow">How It Works</span>
+              <h2
+                style={{
+                  fontSize: "clamp(1.875rem, 3.2vw, 2.5rem)",
+                  color: "var(--slate-950)",
+                  marginTop: "0.625rem",
+                  marginBottom: "1rem",
+                }}
+              >
+                Every visit against the last one.
+              </h2>
+            </div>
+          </AnimateOnScroll>
+
+          <div className="process-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: "0" }}>
+            {process.map((step, i) => (
+              <AnimateOnScroll key={step.n} delay={i * 0.1}>
+                <div
+                  style={{
+                    padding: "1.75rem 0",
+                    borderTop: "1px solid var(--slate-200)",
+                    borderBottom: i === process.length - 1 ? "1px solid var(--slate-200)" : "none",
+                    display: "grid",
+                    gridTemplateColumns: "3.5rem 1fr",
+                    gap: "1.25rem",
+                    alignItems: "baseline",
+                  }}
+                  className="process-row"
+                >
+                  <span className="mono" style={{ fontSize: "0.9375rem", color: "var(--gold-600)" }}>
+                    {step.n}
+                  </span>
+                  <div>
+                    <h3 style={{ fontSize: "1.25rem", color: "var(--slate-950)", marginBottom: "0.5rem" }}>
+                      {step.title}
+                    </h3>
+                    <p style={{ fontSize: "1rem", color: "var(--slate-700)", lineHeight: 1.7, margin: 0, maxWidth: 620 }}>
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              </AnimateOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═════════════════════════════════════
           ABOUT TEASER
           ═════════════════════════════════════ */}
-      <section className="section" style={{ background: "#ffffff", borderTop: "1px solid var(--slate-200)", borderBottom: "1px solid var(--slate-200)" }}>
+      <section className="section" style={{ background: "var(--paper-dim, var(--slate-50))", borderTop: "1px solid var(--slate-200)" }}>
         <div
-          className="container"
+          className="container about-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "1fr",
@@ -404,16 +460,16 @@ export default function HomePage() {
             <div
               style={{
                 position: "relative",
-                borderRadius: "var(--radius-xl)",
+                borderRadius: "var(--radius-lg)",
                 overflow: "hidden",
                 aspectRatio: "4/3",
-                boxShadow: "0 12px 32px rgba(15, 23, 42, 0.08)",
-                border: "2px solid var(--slate-200)",
+                border: "1px solid var(--slate-200)",
+                boxShadow: "var(--shadow-md)",
               }}
             >
               <Image
                 src="/about-care.png"
-                alt="Compassionate medical professional holding patient hand"
+                alt="A HealYou Partners clinician with a patient"
                 fill
                 style={{ objectFit: "cover" }}
               />
@@ -422,54 +478,41 @@ export default function HomePage() {
 
           <AnimateOnScroll direction="right">
             <div>
-              <span
-                style={{
-                  fontSize: "0.8125rem",
-                  fontWeight: 700,
-                  color: "var(--gold-800)",
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Our Promise
-              </span>
+              <span className="eyebrow">Our Approach</span>
               <h2
                 style={{
-                  fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
-                  fontWeight: 800,
-                  color: "var(--slate-900)",
-                  marginTop: "0.5rem",
-                  marginBottom: "1rem",
-                  letterSpacing: "-0.01em",
-                  lineHeight: 1.25,
+                  fontSize: "clamp(1.875rem, 3.2vw, 2.5rem)",
+                  color: "var(--slate-950)",
+                  marginTop: "0.625rem",
+                  marginBottom: "1.25rem",
                 }}
               >
-                Healing Through Compassion & Innovation
+                Judged by outcomes, not appointments.
               </h2>
-              <div className="gold-line" style={{ marginBottom: "1.75rem" }} />
               <p
                 style={{
-                  fontSize: "1.125rem",
+                  fontSize: "1.0625rem",
                   color: "var(--slate-700)",
                   lineHeight: 1.8,
                   marginBottom: "1.75rem",
                 }}
               >
-                At HealYou Partners, we believe every patient deserves
-                world-class care delivered with empathy. Our multidisciplinary
-                team combines the latest medical advancements with a
-                patient-first philosophy to deliver outcomes that transform
-                lives.
+                Too many wound and pain patients cycle through visits without
+                a clear sense of progress. Every plan here starts with a
+                baseline — wound size, pain scores, mobility — and is
+                measured against it, visit over visit. Our team works across
+                wound care, pain medicine, and vascular health, so nothing
+                gets treated in isolation.
               </p>
               <Link href="/about" className="btn-primary">
-                Learn More About Us
+                Meet the Team
               </Link>
             </div>
           </AnimateOnScroll>
         </div>
         <style jsx>{`
           @media (min-width: 768px) {
-            .container {
+            .about-grid {
               grid-template-columns: 1fr 1fr !important;
             }
           }
@@ -477,72 +520,73 @@ export default function HomePage() {
       </section>
 
       {/* ═════════════════════════════════════
-          CTA SECTION
+          CTA — deep sage panel, bookends the footer
           ═════════════════════════════════════ */}
-      <section
-        className="section"
-        style={{
-          position: "relative",
-          overflow: "hidden",
-          background: "var(--teal-50)",
-        }}
-      >
-        <div className="container" style={{ position: "relative" }}>
+      <section style={{ background: "var(--teal-900)", padding: "5.5rem 1.5rem" }}>
+        <div className="container" style={{ textAlign: "center" }}>
           <AnimateOnScroll>
-            <div
-              className="glass-card"
+            <div className="gold-line center" style={{ marginBottom: "1.75rem" }} />
+            <h2
               style={{
-                textAlign: "center",
-                padding: "clamp(2.5rem, 5vw, 4rem)",
-                maxWidth: 760,
-                margin: "0 auto",
-                background: "#ffffff",
-                border: "2px solid var(--teal-200)",
+                fontSize: "clamp(1.875rem, 3.4vw, 2.75rem)",
+                color: "#ffffff",
+                marginBottom: "1rem",
+                maxWidth: 640,
+                marginLeft: "auto",
+                marginRight: "auto",
               }}
             >
-              <h2
+              Start with an assessment, not a sales pitch.
+            </h2>
+            <p
+              style={{
+                fontSize: "1.0625rem",
+                color: "var(--teal-200)",
+                lineHeight: 1.7,
+                marginBottom: "2.25rem",
+                maxWidth: 520,
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
+            >
+              Bring your history and your prior treatments. We&rsquo;ll tell
+              you plainly what we see and what we&rsquo;d do.
+            </p>
+            <div style={{ display: "flex", gap: "1.25rem", justifyContent: "center", flexWrap: "wrap" }}>
+              <Link
+                href="/contact"
                 style={{
-                  fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
-                  fontWeight: 800,
-                  color: "var(--slate-900)",
-                  marginBottom: "1rem",
-                  letterSpacing: "-0.01em",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  padding: "0.875rem 1.875rem",
+                  fontSize: "0.9375rem",
+                  fontWeight: 600,
+                  borderRadius: "var(--radius-md)",
+                  background: "#ffffff",
+                  color: "var(--teal-900)",
+                  textDecoration: "none",
+                  border: "1px solid #ffffff",
                 }}
               >
-                Ready to Begin Your Healing Journey?
-              </h2>
-              <p
+                Schedule Consultation
+              </Link>
+              <Link
+                href="tel:5550000000"
                 style={{
-                  fontSize: "1.0625rem",
-                  color: "var(--slate-700)",
-                  lineHeight: 1.7,
-                  marginBottom: "2.25rem",
-                  maxWidth: 520,
-                  marginLeft: "auto",
-                  marginRight: "auto",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  padding: "0.875rem 1.875rem",
+                  fontSize: "0.9375rem",
+                  fontWeight: 600,
+                  borderRadius: "var(--radius-md)",
+                  background: "transparent",
+                  color: "#ffffff",
+                  textDecoration: "none",
+                  border: "1.5px solid rgba(255,255,255,0.35)",
                 }}
               >
-                Our team is ready to create a personalized treatment plan
-                designed for your unique needs.
-              </p>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "1.25rem",
-                  justifyContent: "center",
-                  flexWrap: "wrap",
-                }}
-              >
-                <Link href="/contact" className="btn-primary">
-                  Schedule Consultation
-                </Link>
-                <Link
-                  href="tel:5550000000"
-                  className="btn-secondary"
-                >
-                  Call (555) 000-0000
-                </Link>
-              </div>
+                Call (555) 000-0000
+              </Link>
             </div>
           </AnimateOnScroll>
         </div>

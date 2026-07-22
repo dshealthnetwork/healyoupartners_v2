@@ -1,80 +1,86 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════
-   ACCESSIBLE LIGHT DESIGN SYSTEM
-   High contrast, senior & visually accessible
+   HEALYOU PARTNERS — DESIGN SYSTEM
+   Clinical precision, restorative warmth.
+   Variable names kept from the previous system
+   (--teal-*, --gold-*, --slate-*) so any other
+   pages in this project that already reference
+   them pick up the new palette automatically.
    ═══════════════════════════════════════════ */
 :root {
-  /* Primary Teal */
-  --teal-950: #041d1a;
-  --teal-900: #0a332f;
-  --teal-800: #0f4c47;
-  --teal-700: #15665f;
-  --teal-600: #1c8077;
-  --teal-500: #24998e;
-  --teal-400: #3db8ab;
-  --teal-200: #b2dfdb;
-  --teal-100: #e6f4f2;
-  --teal-50: #f0faf8;
+  /* "Teal" ramp → deep clinical sage (surgical-scrub green, desaturated) */
+  --teal-950: #131c17;
+  --teal-900: #1d2b23;
+  --teal-800: #263a30;
+  --teal-700: #34503f;
+  --teal-600: #44654f;
+  --teal-500: #55795f;
+  --teal-400: #72937b;
+  --teal-200: #c4d3c6;
+  --teal-100: #e2e9e1;
+  --teal-50: #f3f5f0;
 
-  /* Gold accents */
-  --gold-800: #785206;
-  --gold-700: #966708;
-  --gold-600: #b8860b;
-  --gold-500: #c99309;
-  --gold-400: #d4a017;
-  --gold-100: #fef8e7;
-  --gold-50: #fffdf5;
+  /* "Gold" ramp → healing bronze / iodine amber */
+  --gold-800: #5f3c17;
+  --gold-700: #7c4e1e;
+  --gold-600: #9c6427;
+  --gold-500: #ab7031;
+  --gold-400: #bd8548;
+  --gold-100: #f0e2cd;
+  --gold-50: #f8f0e2;
 
-  /* High contrast neutrals */
-  --slate-950: #070a10;
-  --slate-900: #0f172a;
-  --slate-800: #1e293b;
-  --slate-700: #334155;
-  --slate-600: #475569;
-  --slate-500: #64748b;
-  --slate-400: #94a3b8;
-  --slate-300: #cbd5e1;
-  --slate-200: #e2e8f0;
-  --slate-100: #f1f5f9;
-  --slate-50: #f8fafc;
+  /* "Slate" ramp → warm ink neutrals (not cool blue-grays) */
+  --slate-950: #0e130f;
+  --slate-900: #1a2119;
+  --slate-800: #29332c;
+  --slate-700: #43514a;
+  --slate-600: #5c6a62;
+  --slate-500: #798379;
+  --slate-400: #9aa39a;
+  --slate-300: #c2c9bf;
+  --slate-200: #dfe3d9;
+  --slate-100: #eef0e9;
+  --slate-50: #f8f8f4;
   --white: #ffffff;
 
-  /* Semantic Light Mode Tokens */
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  /* Semantic tokens */
+  --background: #faf9f5;
+  --paper-dim: #f3f1ea;
+  --foreground: #1a2119;
   --card-bg: #ffffff;
-  --card-border: #e2e8f0;
-  --glass-bg: rgba(255, 255, 255, 0.94);
-  --glass-border: rgba(15, 76, 71, 0.15);
+  --card-border: #dfe3d9;
+  --glass-bg: rgba(250, 249, 245, 0.92);
+  --glass-border: rgba(26, 33, 25, 0.1);
 
-  /* Radii */
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.25rem;
-  --radius-2xl: 1.75rem;
+  /* Radii — rectangular-leaning, clinical rather than pill-bubbly */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
   --radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
-  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.08);
-  --shadow-lg: 0 10px 30px rgba(15, 23, 42, 0.1);
-  --shadow-glow: 0 10px 30px rgba(15, 76, 71, 0.12);
+  /* Shadows — ink-tinted, not cool navy */
+  --shadow-sm: 0 1px 2px rgba(26, 33, 25, 0.07);
+  --shadow-md: 0 6px 20px rgba(26, 33, 25, 0.08);
+  --shadow-lg: 0 16px 40px rgba(26, 33, 25, 0.1);
+  --shadow-glow: 0 10px 28px rgba(38, 58, 48, 0.14);
 
-  /* Transitions */
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
-  --duration-normal: 300ms;
+  --duration-normal: 220ms;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
+  --font-display: var(--font-fraunces);
+  --font-mono: var(--font-mono);
 }
 
 /* ═══════════════════════════════════════════
-   BASE RESET & ACCESSIBLE TYPOGRAPHY
+   BASE RESET & TYPOGRAPHY
    ═══════════════════════════════════════════ */
 *,
 *::before,
@@ -95,7 +101,41 @@ body {
   line-height: 1.65;
   margin: 0;
   overflow-x: hidden;
-  font-size: 1.0625rem; /* Larger base font for readability */
+  font-size: 1.0625rem;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+/* Numbers, labels, data — a quiet clinical-chart voice */
+.mono,
+.stat-value,
+.eyebrow {
+  font-family: var(--font-mono), "IBM Plex Mono", ui-monospace, monospace;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-700);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: var(--gold-600);
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 /* ═══════════════════════════════════════════
@@ -104,13 +144,16 @@ body {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--slate-100);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--teal-700);
   border-radius: var(--radius-full);
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--teal-900);
 }
@@ -119,49 +162,51 @@ body {
    UTILITY CLASSES & CARDS
    ═══════════════════════════════════════════ */
 
-/* Glass header / panel */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(16px) saturate(1.4);
-  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-sm);
 }
 
-/* High contrast clinical card */
+/* Restrained hairline card — no lift, no glow-on-hover theatrics */
 .glass-card {
   background: var(--card-bg);
-  border: 1.5px solid #cbd5e1;
-  border-radius: var(--radius-xl);
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
-  transition: transform var(--duration-normal) var(--ease-smooth),
-    box-shadow var(--duration-normal) var(--ease-smooth),
-    border-color var(--duration-normal) var(--ease-smooth);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--duration-normal) var(--ease-smooth),
+    box-shadow var(--duration-normal) var(--ease-smooth);
 }
 
 .glass-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(15, 76, 71, 0.12);
   border-color: var(--teal-600);
+  box-shadow: var(--shadow-md);
 }
 
-/* Gold accent line */
+/* Suture-stitch divider — the page's signature mark.
+   Replaces the generic gradient bar; reads as what it is: a closed wound. */
 .gold-line {
-  width: 64px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--gold-600), var(--gold-500));
-  border-radius: var(--radius-full);
+  width: 104px;
+  height: 15px;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='104' height='15' viewBox='0 0 104 15'%3E%3Cline x1='0' y1='7.5' x2='104' y2='7.5' stroke='%239c6427' stroke-width='1.25'/%3E%3Cline x1='8' y1='1' x2='8' y2='14' stroke='%239c6427' stroke-width='1.5'/%3E%3Cline x1='26' y1='1' x2='26' y2='14' stroke='%239c6427' stroke-width='1.5'/%3E%3Cline x1='44' y1='1' x2='44' y2='14' stroke='%239c6427' stroke-width='1.5'/%3E%3Cline x1='62' y1='1' x2='62' y2='14' stroke='%239c6427' stroke-width='1.5'/%3E%3Cline x1='80' y1='1' x2='80' y2='14' stroke='%239c6427' stroke-width='1.5'/%3E%3Cline x1='98' y1='1' x2='98' y2='14' stroke='%239c6427' stroke-width='1.5'/%3E%3C/svg%3E");
+}
+
+.gold-line.center {
+  margin: 0 auto;
 }
 
 /* Section spacing */
 .section {
-  padding: 6rem 1.5rem;
+  padding: 5.5rem 1.5rem;
   position: relative;
 }
 
 @media (min-width: 768px) {
   .section {
-    padding: 8rem 2rem;
+    padding: 7.5rem 2rem;
   }
 }
 
@@ -171,88 +216,75 @@ body {
   width: 100%;
 }
 
-/* High contrast gradient text */
+/* Emphasis text — restrained (no gradient-clip cliché) */
 .gradient-text {
-  background: linear-gradient(135deg, var(--teal-800) 0%, var(--gold-700) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--gold-700);
+  font-style: italic;
 }
 
-/* Primary Button - Deep Teal high contrast */
+/* Primary button — solid ink, shifts to bronze on hover. No pill, no glow-lift. */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.9375rem 2.25rem;
-  font-size: 1rem;
-  font-weight: 700;
+  padding: 0.875rem 1.875rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
   letter-spacing: 0.01em;
   color: var(--white) !important;
-  background: linear-gradient(135deg, var(--teal-800), var(--teal-900));
-  border: 1px solid var(--teal-950);
-  border-radius: var(--radius-full);
+  background: var(--slate-900);
+  border: 1px solid var(--slate-900);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all var(--duration-normal) var(--ease-smooth);
+  transition: background var(--duration-normal) var(--ease-smooth),
+    border-color var(--duration-normal) var(--ease-smooth);
   text-decoration: none;
-  box-shadow: 0 4px 14px rgba(15, 76, 71, 0.25);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(15, 76, 71, 0.35);
-  background: linear-gradient(135deg, var(--teal-700), var(--teal-800));
+  background: var(--gold-700);
+  border-color: var(--gold-700);
 }
 
-/* Secondary Button - High contrast outline */
+/* Secondary button — outline, ink text */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.9375rem 2.25rem;
-  font-size: 1rem;
-  font-weight: 700;
+  padding: 0.875rem 1.875rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
   letter-spacing: 0.01em;
-  color: var(--teal-900) !important;
-  background: #ffffff;
-  border: 2px solid var(--teal-800);
-  border-radius: var(--radius-full);
+  color: var(--slate-900) !important;
+  background: transparent;
+  border: 1.5px solid var(--slate-300);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all var(--duration-normal) var(--ease-smooth);
+  transition: border-color var(--duration-normal) var(--ease-smooth),
+    background var(--duration-normal) var(--ease-smooth);
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
 }
 
 .btn-secondary:hover {
-  background: var(--teal-50);
-  border-color: var(--teal-900);
-  transform: translateY(-2px);
+  border-color: var(--slate-900);
+  background: var(--slate-50);
 }
 
-/* Background patterns */
+/* Background patterns — toned down, ink-tinted rather than bright teal */
 .bg-grid {
-  background-image: radial-gradient(
-    circle at 1px 1px,
-    rgba(15, 76, 71, 0.06) 1px,
-    transparent 0
-  );
+  background-image: radial-gradient(circle at 1px 1px,
+      rgba(26, 33, 25, 0.05) 1px,
+      transparent 0);
   background-size: 32px 32px;
 }
 
 .bg-radial {
-  background: radial-gradient(
-    ellipse 80% 50% at 50% -20%,
-    rgba(15, 76, 71, 0.08),
-    transparent
-  );
+  background: radial-gradient(ellipse 80% 50% at 50% -20%,
+      rgba(38, 58, 48, 0.06),
+      transparent);
 }
 
-/* Simple subtle animation */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

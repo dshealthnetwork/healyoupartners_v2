@@ -13,9 +13,8 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: "#ffffff",
-        borderTop: "2px solid var(--slate-200)",
-        padding: "4rem 1.5rem 2.5rem",
+        background: "var(--teal-950)",
+        padding: "4.5rem 1.5rem 2.5rem",
       }}
     >
       <div
@@ -24,13 +23,13 @@ export default function Footer() {
           margin: "0 auto",
           display: "grid",
           gridTemplateColumns: "1fr",
-          gap: "2.5rem",
+          gap: "2.75rem",
         }}
         className="footer-grid"
       >
         {/* Brand */}
         <div>
-          <div style={{ marginBottom: "1rem" }}>
+          <div style={{ marginBottom: "1.25rem" }}>
             <Link href="/" style={{ textDecoration: "none", display: "inline-block" }}>
               <Image
                 src="/logo.jpg"
@@ -38,10 +37,10 @@ export default function Footer() {
                 width={260}
                 height={80}
                 style={{
-                  height: "64px",
+                  height: "56px",
                   width: "auto",
                   objectFit: "contain",
-                  borderRadius: "6px",
+                  borderRadius: "4px",
                 }}
               />
             </Link>
@@ -49,13 +48,13 @@ export default function Footer() {
           <p
             style={{
               fontSize: "0.9375rem",
-              color: "var(--slate-700)",
+              color: "var(--teal-200)",
               lineHeight: 1.7,
               maxWidth: 360,
             }}
           >
-            Delivering evidence-based wound care and comprehensive pain
-            management with compassion, innovation, and personalized care.
+            Wound care and pain management, tracked closely and explained
+            plainly — from first visit to closed wound.
           </p>
         </div>
 
@@ -63,15 +62,16 @@ export default function Footer() {
         <div>
           <h4
             style={{
-              fontSize: "0.875rem",
-              fontWeight: 700,
-              color: "var(--teal-900)",
-              letterSpacing: "0.1em",
+              fontFamily: "var(--font-mono)",
+              fontSize: "0.75rem",
+              fontWeight: 500,
+              color: "var(--gold-400)",
+              letterSpacing: "0.14em",
               textTransform: "uppercase",
-              marginBottom: "1rem",
+              marginBottom: "1.125rem",
             }}
           >
-            Quick Links
+            Site
           </h4>
           <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
             {footerLinks.map((link) => (
@@ -80,16 +80,16 @@ export default function Footer() {
                   href={link.href}
                   style={{
                     fontSize: "0.9375rem",
-                    fontWeight: 600,
-                    color: "var(--slate-700)",
+                    fontWeight: 500,
+                    color: "var(--teal-100)",
                     textDecoration: "none",
                     transition: "color 0.2s ease",
                   }}
                   onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) =>
-                    (e.currentTarget.style.color = "var(--teal-800)")
+                    (e.currentTarget.style.color = "var(--gold-400)")
                   }
                   onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) =>
-                    (e.currentTarget.style.color = "var(--slate-700)")
+                    (e.currentTarget.style.color = "var(--teal-100)")
                   }
                 >
                   {link.label}
@@ -103,25 +103,26 @@ export default function Footer() {
         <div>
           <h4
             style={{
-              fontSize: "0.875rem",
-              fontWeight: 700,
-              color: "var(--teal-900)",
-              letterSpacing: "0.1em",
+              fontFamily: "var(--font-mono)",
+              fontSize: "0.75rem",
+              fontWeight: 500,
+              color: "var(--gold-400)",
+              letterSpacing: "0.14em",
               textTransform: "uppercase",
-              marginBottom: "1rem",
+              marginBottom: "1.125rem",
             }}
           >
             Contact
           </h4>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-            <span style={{ fontSize: "0.9375rem", color: "var(--slate-700)", fontWeight: 500 }}>
-              ✉ info@healyoupartners.com
+            <span style={{ fontSize: "0.9375rem", color: "var(--teal-100)" }}>
+              info@healyoupartners.com
             </span>
-            <span style={{ fontSize: "0.9375rem", color: "var(--slate-700)", fontWeight: 500 }}>
-              ☎ (555) 000-0000
+            <span style={{ fontSize: "0.9375rem", color: "var(--teal-100)" }}>
+              (555) 000-0000
             </span>
-            <span style={{ fontSize: "0.9375rem", color: "var(--slate-700)", fontWeight: 500 }}>
-              📍 123 Medical Center Dr, Suite 100
+            <span style={{ fontSize: "0.9375rem", color: "var(--teal-100)" }}>
+              123 Medical Center Dr, Suite 100
             </span>
           </div>
         </div>
@@ -131,21 +132,24 @@ export default function Footer() {
       <div
         style={{
           maxWidth: 1200,
-          margin: "3rem auto 0",
-          paddingTop: "1.5rem",
-          borderTop: "1px solid var(--slate-200)",
+          margin: "3.25rem auto 0",
+          paddingTop: "1.75rem",
+          borderTop: "1px solid rgba(226, 233, 225, 0.14)",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           flexWrap: "wrap",
-          gap: "0.5rem",
+          gap: "0.75rem",
         }}
       >
-        <p style={{ fontSize: "0.875rem", color: "var(--slate-600)", margin: 0, fontWeight: 500 }}>
+        <p style={{ fontSize: "0.8125rem", color: "var(--teal-400)", margin: 0 }}>
           © {new Date().getFullYear()} HealYou Partners. All rights reserved.
         </p>
-        <p style={{ fontSize: "0.875rem", color: "var(--teal-900)", margin: 0, fontWeight: 600 }}>
-          Compassion · Innovation · Excellence
+        <p
+          className="mono"
+          style={{ fontSize: "0.75rem", color: "var(--teal-400)", margin: 0, letterSpacing: "0.08em" }}
+        >
+          EVIDENCE-BASED · PATIENT-LED
         </p>
       </div>
 

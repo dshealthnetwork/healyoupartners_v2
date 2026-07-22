@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Fraunces, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -10,22 +10,37 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-fraunces",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
+  weight: ["400", "500"],
+});
+
 export const metadata: Metadata = {
-  title: "HealYou Partners | Advanced Wound Care & Pain Management",
+  title: "HealYou Partners | Wound Care & Pain Management",
   description:
-    "Delivering evidence-based wound care and comprehensive pain management with compassion, innovation, and personalized treatment plans. World-class medical expertise for every patient.",
+    "A wound care and pain management practice built around one measure: how you're healing. Evidence-based treatment, tracked closely and explained plainly.",
   keywords: [
     "wound care",
     "pain management",
-    "advanced wound care",
-    "chronic pain",
-    "evidence-based treatment",
-    "personalized care",
+    "diabetic ulcer treatment",
+    "chronic pain clinic",
+    "regenerative therapy",
+    "vascular assessment",
   ],
   openGraph: {
-    title: "HealYou Partners | Advanced Wound Care & Pain Management",
+    title: "HealYou Partners | Wound Care & Pain Management",
     description:
-      "Delivering evidence-based wound care and comprehensive pain management with compassion, innovation, and personalized treatment plans.",
+      "A wound care and pain management practice built around one measure: how you're healing.",
     type: "website",
   },
 };
@@ -36,7 +51,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable} data-scroll-behavior="smooth">
+    <html
+      lang="en"
+      className={`${inter.variable} ${fraunces.variable} ${plexMono.variable}`}
+      data-scroll-behavior="smooth"
+    >
       <body>
         <Header />
         <main>{children}</main>
